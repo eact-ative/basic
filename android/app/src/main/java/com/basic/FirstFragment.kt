@@ -9,6 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.basic.databinding.FragmentFirstBinding
+import com.eactative.ua.rn.RNActivity
+import com.eactative.ua.rn.RNManager
+import com.eactative.ua.service.ModuleInfo
+import com.eactative.ua.service.Source
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -38,9 +42,16 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         GlobalScope.launch(Dispatchers.IO) {
-//            RNManager.getReactRootView(requireContext(), requireActivity().application)
             try {
-                RNManager.preload(requireContext(), requireActivity().application)
+                RNManager.preload(requireContext(), requireActivity().application, ModuleInfo(
+                        "aa",
+                "1234",
+                1,
+                "Android",
+                "RN",
+                arrayOf(Source("", true)),
+                arrayOf(Source("", true))
+                ))
             } catch (e: Exception) {
                 Log.e("aaa", e.toString())
             }
@@ -48,7 +59,7 @@ class FirstFragment : Fragment() {
         }
 
         binding.buttonFirst.setOnClickListener {
-            val intent = Intent(this.context, MainActivity3::class.java)
+            val intent = Intent(this.context, RNActivity::class.java)
             startActivity(intent)
 //            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
