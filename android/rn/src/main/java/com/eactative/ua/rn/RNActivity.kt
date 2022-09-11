@@ -2,8 +2,8 @@ package com.eactative.ua.rn
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.eactative.ua.service.ModuleInfo
-import com.eactative.ua.service.Source
+import com.eactative.ua.entity.ModuleInfo
+import com.eactative.ua.entity.Source
 import com.facebook.react.ReactRootView
 import com.facebook.soloader.SoLoader
 

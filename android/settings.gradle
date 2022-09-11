@@ -12,3 +12,4 @@ if (settings.hasProperty("newArchEnabled") && settings.newArchEnabled == "true")
 include ':rn'
 include ':lib'
 include ':lib:resource'
+include ':lib:common'

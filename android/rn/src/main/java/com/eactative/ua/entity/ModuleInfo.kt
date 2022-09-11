@@ -1,19 +1,19 @@
-package com.eactative.ua.service
+package com.eactative.ua.entity
 
 data class ModuleInfo(
-    val appID: String,
-    val moduleID: String,
-    val version: Int,
+    var appID: String,
+    var moduleID: String,
+    var version: Int,
     /**
      * "Android"
      */
-    val os: String,
+    var os: String,
     /**
      * "RN"
      */
-    val agent: String,
-    val script: Array<Source>,
-    val ttf: Array<Source>
+    var agent: String,
+    var script: Array<Source>,
+    var ttf: Array<Source>
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

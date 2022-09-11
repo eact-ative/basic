@@ -36,6 +36,14 @@ dependencies {
     implementation(
         project(":ReactAndroid")
     )
+    implementation(
+        project(":lib:resource")
+    )
+    implementation("com.squareup.okhttp3:okhttp:4.9.2")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okio:okio:1.15.0")
+
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.3.0")

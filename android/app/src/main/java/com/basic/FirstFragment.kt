@@ -7,12 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import com.basic.databinding.FragmentFirstBinding
 import com.eactative.ua.rn.RNActivity
 import com.eactative.ua.rn.RNManager
-import com.eactative.ua.service.ModuleInfo
-import com.eactative.ua.service.Source
+import com.eactative.ua.entity.ModuleInfo
+import com.eactative.ua.entity.Source
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

@@ -34,6 +34,9 @@ import java.util.List;
  * `newArchEnabled` property). Is ignored otherwise.
  */
 public class MainApplicationReactNativeHost extends ReactNativeHost {
+  public String jsBundleFile;
+  public String jsMainModuleName;
+
   public MainApplicationReactNativeHost(Application application) {
     super(application);
   }
@@ -45,14 +48,14 @@ public class MainApplicationReactNativeHost extends ReactNativeHost {
 
   @Override
   protected List<ReactPackage> getPackages() {
-    List<ReactPackage> packages = new PackageList(this).getPackages();
+//    List<ReactPackage> packages = new PackageList(this).getPackages();
     // Packages that cannot be autolinked yet can be added manually here, for example:
     //     packages.add(new MyReactNativePackage());
     // TurboModules must also be loaded here providing a valid TurboReactPackage implementation:
     //     packages.add(new TurboReactPackage() { ... });
     // If you have custom Fabric Components, their ViewManagers should also be loaded here
     // inside a ReactPackage.
-    return packages;
+    return null;
   }
 
   @Override
