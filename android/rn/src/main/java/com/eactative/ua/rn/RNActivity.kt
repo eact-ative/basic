@@ -8,30 +8,31 @@ import com.facebook.react.ReactRootView
 import com.facebook.soloader.SoLoader
 
 class RNActivity : AppCompatActivity() {
-    private lateinit var reactRootView: ReactRootView
+    private var reactRootView: ReactRootView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        load()
     }
 
     override fun onPause() {
         super.onPause()
         if(reactRootView != null) {
-            reactRootView.reactInstanceManager?.onHostPause(this)
+            reactRootView!!.reactInstanceManager?.onHostPause(this)
         }
     }
 
     override fun onResume() {
         super.onResume()
         if(reactRootView != null) {
-            reactRootView.reactInstanceManager?.onHostResume(this)
+            reactRootView!!.reactInstanceManager?.onHostResume(this)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         if(reactRootView != null) {
-            reactRootView.reactInstanceManager?.onHostDestroy(this)
-            reactRootView.unmountReactApplication()
+            reactRootView!!.reactInstanceManager?.onHostDestroy(this)
+            reactRootView!!.unmountReactApplication()
         }
     }
 
@@ -50,7 +51,7 @@ class RNActivity : AppCompatActivity() {
         val reactInstanceManager = RNManager.preload(this, application, moduleInfo) ?: return
         if(reactInstanceManager.hasStartedCreatingInitialContext()) {
             val reactContext = reactInstanceManager.currentReactContext
-            reactRootView.startReactApplication(reactInstanceManager, "basic")
+            reactRootView!!.startReactApplication(reactInstanceManager, "basic")
             setContentView(reactRootView)
         }
     }

@@ -24,6 +24,7 @@ import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -55,7 +56,7 @@ public class MainApplicationReactNativeHost extends ReactNativeHost {
     //     packages.add(new TurboReactPackage() { ... });
     // If you have custom Fabric Components, their ViewManagers should also be loaded here
     // inside a ReactPackage.
-    return null;
+    return Collections.emptyList();
   }
 
   @Override

@@ -4,7 +4,7 @@
 
     <application>
         <activity
-            android:name=".RNActivity"
+            android:name="com.eactative.ua.rn.RNActivity"
             android:exported="false" />
     </application>
 
