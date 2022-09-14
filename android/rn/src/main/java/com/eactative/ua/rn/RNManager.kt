@@ -25,6 +25,30 @@ import java.io.File
 class RNManager {
     companion object {
         private val reactInstanceManagerPool: HashMap<String, ReactInstanceManager> = HashMap()
+        fun boot(context: Context, application: Application, moduleInfo: ModuleInfo) {
+            val moduleID = moduleInfo.moduleID
+            if(reactInstanceManagerPool[moduleID] != null) {
+                return
+            }
+            var mainApplicationReactNativeHost = MainApplicationReactNativeHost(application)
+            mainApplicationReactNativeHost.jsBundleFile = "assets://index.android.bundle"
+            mainApplicationReactNativeHost.jsMainModuleName = "index"
+            val reactInstanceManager = mainApplicationReactNativeHost.reactInstanceManager
+//                reactInstanceManager = ReactInstanceManager.builder()
+//                    .setApplication(application)
+//                    .setJSBundleFile("assets://index.android.bundle")
+//                    .addPackage(MainReactPackage())
+//                    .setUseDeveloperSupport(BuildConfig.DEBUG)
+//                    .setInitialLifecycleState(LifecycleState.RESUMED)
+//                    .build()
+            reactInstanceManagerPool[moduleID] = reactInstanceManager
+            Log.e(Constants.TAG_UA_RN, reactInstanceManager.jsExecutorName)
+            GlobalScope.launch(Dispatchers.Main) {
+                reactInstanceManager?.createReactContextInBackground()
+            }
+            return
+        }
+
         fun preload(context: Context, application: Application, moduleInfo: ModuleInfo): ReactInstanceManager? {
             val moduleID = moduleInfo.moduleID
             if(reactInstanceManagerPool[moduleID] != null) {
